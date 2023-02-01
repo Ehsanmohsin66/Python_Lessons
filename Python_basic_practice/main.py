@@ -5,6 +5,28 @@
 
 from math import *
 
+def minion_game(string):
+    # your code goes here
+    words = []
+    kevin_words_count = float(0)
+    stuart_words_count = float(0)
+    for l in range(len(string)):
+        if string[l] in ('A', 'E', 'I', 'O', 'U'):
+            kevin_words = [string[l:j] for j in range(l + 1, len(string) + 1)]
+            kevin_words_count = kevin_words_count + len(kevin_words)
+        else:
+            stuart_words = [string[l:j] for j in range(l + 1, len(string) + 1)]
+            stuart_words_count = stuart_words_count + len(stuart_words)
+
+    if kevin_words_count > stuart_words_count:
+        print('Kevin ' + str(int(kevin_words_count)))
+    elif kevin_words_count < stuart_words_count:
+        print('Stuart ' + str(int(stuart_words_count)))
+    elif kevin_words_count == stuart_words_count:
+        print('Draw')
+    else:
+        print('No result')
+
 
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
@@ -94,4 +116,6 @@ if __name__ == '__main__':
     guessing_game('Monopoly', 3)   #Guess word monoploy in 3 attempts
     list_test = [[1, 2, 3], [5, 'n'], [0], []]
     print2d_list(list_test)
+    st=input('Enter word for minion game')
+    minion_game(st)
 
